@@ -129,6 +129,22 @@ Device.BeginInvokeOnMainThread (() => {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="IsInvokeRequired">
+      <MemberSignature Language="C#" Value="public static bool IsInvokeRequired { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool IsInvokeRequired" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OnPlatform">
       <MemberSignature Language="C#" Value="public static void OnPlatform (Action iOS = null, Action Android = null, Action WinPhone = null, Action Default = null);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void OnPlatform(class System.Action iOS, class System.Action Android, class System.Action WinPhone, class System.Action Default) cil managed" />

@@ -168,5 +168,27 @@ label.AddBinding (new Binding (Label.TextProperty, "Price") {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="TryGetSynchronizedCollection">
+      <MemberSignature Language="C#" Value="public static bool TryGetSynchronizedCollection (System.Collections.IEnumerable collection, out Xamarin.Forms.CollectionSynchronizationContext synchronizationContext);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool TryGetSynchronizedCollection(class System.Collections.IEnumerable collection, class Xamarin.Forms.CollectionSynchronizationContext synchronizationContext) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="collection" Type="System.Collections.IEnumerable" />
+        <Parameter Name="synchronizationContext" Type="Xamarin.Forms.CollectionSynchronizationContext&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="collection">To be added.</param>
+        <param name="synchronizationContext">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

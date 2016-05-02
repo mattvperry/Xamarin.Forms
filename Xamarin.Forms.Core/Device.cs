@@ -27,11 +27,6 @@ namespace Xamarin.Forms
 			set { info = value; }
 		}
 
-		internal static bool IsInvokeRequired
-		{
-			get { return PlatformServices.IsInvokeRequired; }
-		}
-
 		internal static IPlatformServices PlatformServices
 		{
 			get
@@ -41,6 +36,11 @@ namespace Xamarin.Forms
 				return s_platformServices;
 			}
 			set { s_platformServices = value; }
+		}
+
+		public static bool IsInvokeRequired
+		{
+			get { return PlatformServices.IsInvokeRequired; }
 		}
 
 		public static void BeginInvokeOnMainThread(Action action)

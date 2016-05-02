@@ -64,6 +64,14 @@ namespace Xamarin.Forms
 			SynchronizedCollections.Add(collection, new CollectionSynchronizationContext(context, callback));
 		}
 
+		public static bool TryGetSynchronizedCollection(IEnumerable collection, out CollectionSynchronizationContext synchronizationContext)
+		{
+			if (collection == null)
+				throw new ArgumentNullException(nameof(collection));
+
+			return SynchronizedCollections.TryGetValue(collection, out synchronizationContext);
+		}
+
 		protected void ThrowIfApplied()
 		{
 			if (IsApplied)
@@ -93,14 +101,6 @@ namespace Xamarin.Forms
 		internal virtual object GetTargetValue(object value, Type sourcePropertyType)
 		{
 			return value;
-		}
-
-		internal static bool TryGetSynchronizedCollection(IEnumerable collection, out CollectionSynchronizationContext synchronizationContext)
-		{
-			if (collection == null)
-				throw new ArgumentNullException("collection");
-
-			return SynchronizedCollections.TryGetValue(collection, out synchronizationContext);
 		}
 
 		internal virtual void Unapply()

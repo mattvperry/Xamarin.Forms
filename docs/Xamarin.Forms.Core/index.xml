@@ -172,6 +172,7 @@
       <Type Name="CarouselPage" Kind="Class" />
       <Type Name="Cell" Kind="Class" />
       <Type Name="CollectionSynchronizationCallback" Kind="Delegate" />
+      <Type Name="CollectionSynchronizationContext" Kind="Class" />
       <Type Name="Color" Kind="Structure" />
       <Type Name="ColorTypeConverter" Kind="Class" />
       <Type Name="ColumnDefinition" Kind="Class" />
@@ -207,6 +208,9 @@
       <Type Name="ElementTemplate" Kind="Class" />
       <Type Name="Entry" Kind="Class" />
       <Type Name="EntryCell" Kind="Class" />
+      <Type Name="EnumerableExtensions" Kind="Class" />
+      <Type Name="EnumerableExtensions+GenericListAsReadOnlyList`1" DisplayName="EnumerableExtensions+GenericListAsReadOnlyList&lt;T&gt;" Kind="Class" />
+      <Type Name="EnumerableExtensions+ListAsReadOnlyList" Kind="Class" />
       <Type Name="EventTrigger" Kind="Class" />
       <Type Name="ExportEffectAttribute" Kind="Class" />
       <Type Name="FileImageSource" Kind="Class" />
@@ -704,6 +708,193 @@
           <summary>Creates and applies a binding from an expression.</summary>
         </Docs>
         <Link Type="Xamarin.Forms.BindableObjectExtensions" Member="M:Xamarin.Forms.BindableObjectExtensions.SetBinding``1(Xamarin.Forms.BindableObject,Xamarin.Forms.BindableProperty,System.Linq.Expressions.Expression{System.Func{``0,System.Object}},Xamarin.Forms.BindingMode,Xamarin.Forms.IValueConverter,System.String)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:System.Collections.Generic.IEnumerable`1" />
+      </Targets>
+      <Member MemberName="Append&lt;T&gt;">
+        <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;T&gt; Append&lt;T&gt; (this System.Collections.Generic.IEnumerable&lt;T&gt; enumerable, T item);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; Append&lt;T&gt;(class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; enumerable, !!T item) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>System.Collections.Generic.IEnumerable&lt;T&gt;</ReturnType>
+        </ReturnValue>
+        <TypeParameters>
+          <TypeParameter Name="T" />
+        </TypeParameters>
+        <Parameters>
+          <Parameter Name="enumerable" Type="System.Collections.Generic.IEnumerable&lt;T&gt;" RefType="this" />
+          <Parameter Name="item" Type="T" />
+        </Parameters>
+        <Docs>
+          <typeparam name="T">To be added.</typeparam>
+          <param name="enumerable">To be added.</param>
+          <param name="item">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="Xamarin.Forms.EnumerableExtensions" Member="M:Xamarin.Forms.EnumerableExtensions.Append``1(System.Collections.Generic.IEnumerable{``0},``0)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:System.Collections.Generic.IEnumerable`1" />
+      </Targets>
+      <Member MemberName="ForEach&lt;T&gt;">
+        <MemberSignature Language="C#" Value="public static void ForEach&lt;T&gt; (this System.Collections.Generic.IEnumerable&lt;T&gt; enumeration, Action&lt;T&gt; action);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ForEach&lt;T&gt;(class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; enumeration, class System.Action`1&lt;!!T&gt; action) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>System.Void</ReturnType>
+        </ReturnValue>
+        <TypeParameters>
+          <TypeParameter Name="T" />
+        </TypeParameters>
+        <Parameters>
+          <Parameter Name="enumeration" Type="System.Collections.Generic.IEnumerable&lt;T&gt;" RefType="this" />
+          <Parameter Name="action" Type="System.Action&lt;T&gt;" />
+        </Parameters>
+        <Docs>
+          <typeparam name="T">To be added.</typeparam>
+          <param name="enumeration">To be added.</param>
+          <param name="action">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="Xamarin.Forms.EnumerableExtensions" Member="M:Xamarin.Forms.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:System.Collections.Generic.IEnumerable`1" />
+      </Targets>
+      <Member MemberName="GetGesturesFor&lt;T&gt;">
+        <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;T&gt; GetGesturesFor&lt;T&gt; (this System.Collections.Generic.IEnumerable&lt;Xamarin.Forms.IGestureRecognizer&gt; gestures, Func&lt;T,bool&gt; predicate = null) where T : Xamarin.Forms.GestureRecognizer;" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; GetGesturesFor&lt;(class Xamarin.Forms.GestureRecognizer) T&gt;(class System.Collections.Generic.IEnumerable`1&lt;class Xamarin.Forms.IGestureRecognizer&gt; gestures, class System.Func`2&lt;!!T, bool&gt; predicate) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>System.Collections.Generic.IEnumerable&lt;T&gt;</ReturnType>
+        </ReturnValue>
+        <TypeParameters>
+          <TypeParameter Name="T">
+            <Constraints>
+              <BaseTypeName>Xamarin.Forms.GestureRecognizer</BaseTypeName>
+            </Constraints>
+          </TypeParameter>
+        </TypeParameters>
+        <Parameters>
+          <Parameter Name="gestures" Type="System.Collections.Generic.IEnumerable&lt;Xamarin.Forms.IGestureRecognizer&gt;" RefType="this" />
+          <Parameter Name="predicate" Type="System.Func&lt;T,System.Boolean&gt;" />
+        </Parameters>
+        <Docs>
+          <typeparam name="T">To be added.</typeparam>
+          <param name="gestures">To be added.</param>
+          <param name="predicate">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="Xamarin.Forms.EnumerableExtensions" Member="M:Xamarin.Forms.EnumerableExtensions.GetGesturesFor``1(System.Collections.Generic.IEnumerable{Xamarin.Forms.IGestureRecognizer},System.Func{``0,System.Boolean})" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:System.Collections.Generic.IEnumerable`1" />
+      </Targets>
+      <Member MemberName="IndexOf&lt;T&gt;">
+        <MemberSignature Language="C#" Value="public static int IndexOf&lt;T&gt; (this System.Collections.Generic.IEnumerable&lt;T&gt; enumerable, T item);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 IndexOf&lt;T&gt;(class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; enumerable, !!T item) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>System.Int32</ReturnType>
+        </ReturnValue>
+        <TypeParameters>
+          <TypeParameter Name="T" />
+        </TypeParameters>
+        <Parameters>
+          <Parameter Name="enumerable" Type="System.Collections.Generic.IEnumerable&lt;T&gt;" RefType="this" />
+          <Parameter Name="item" Type="T" />
+        </Parameters>
+        <Docs>
+          <typeparam name="T">To be added.</typeparam>
+          <param name="enumerable">To be added.</param>
+          <param name="item">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="Xamarin.Forms.EnumerableExtensions" Member="M:Xamarin.Forms.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},``0)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:System.Collections.Generic.IEnumerable`1" />
+      </Targets>
+      <Member MemberName="IndexOf&lt;T&gt;">
+        <MemberSignature Language="C#" Value="public static int IndexOf&lt;T&gt; (this System.Collections.Generic.IEnumerable&lt;T&gt; enumerable, Func&lt;T,bool&gt; predicate);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 IndexOf&lt;T&gt;(class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; enumerable, class System.Func`2&lt;!!T, bool&gt; predicate) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>System.Int32</ReturnType>
+        </ReturnValue>
+        <TypeParameters>
+          <TypeParameter Name="T" />
+        </TypeParameters>
+        <Parameters>
+          <Parameter Name="enumerable" Type="System.Collections.Generic.IEnumerable&lt;T&gt;" RefType="this" />
+          <Parameter Name="predicate" Type="System.Func&lt;T,System.Boolean&gt;" />
+        </Parameters>
+        <Docs>
+          <typeparam name="T">To be added.</typeparam>
+          <param name="enumerable">To be added.</param>
+          <param name="predicate">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="Xamarin.Forms.EnumerableExtensions" Member="M:Xamarin.Forms.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:System.Collections.Generic.IEnumerable`1" />
+      </Targets>
+      <Member MemberName="Prepend&lt;T&gt;">
+        <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;T&gt; Prepend&lt;T&gt; (this System.Collections.Generic.IEnumerable&lt;T&gt; enumerable, T item);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; Prepend&lt;T&gt;(class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; enumerable, !!T item) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>System.Collections.Generic.IEnumerable&lt;T&gt;</ReturnType>
+        </ReturnValue>
+        <TypeParameters>
+          <TypeParameter Name="T" />
+        </TypeParameters>
+        <Parameters>
+          <Parameter Name="enumerable" Type="System.Collections.Generic.IEnumerable&lt;T&gt;" RefType="this" />
+          <Parameter Name="item" Type="T" />
+        </Parameters>
+        <Docs>
+          <typeparam name="T">To be added.</typeparam>
+          <param name="enumerable">To be added.</param>
+          <param name="item">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="Xamarin.Forms.EnumerableExtensions" Member="M:Xamarin.Forms.EnumerableExtensions.Prepend``1(System.Collections.Generic.IEnumerable{``0},``0)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:System.Collections.IEnumerable" />
+      </Targets>
+      <Member MemberName="ToReadOnlyList">
+        <MemberSignature Language="C#" Value="public static System.Collections.Generic.IReadOnlyList&lt;object&gt; ToReadOnlyList (this System.Collections.IEnumerable enumerable);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IReadOnlyList`1&lt;object&gt; ToReadOnlyList(class System.Collections.IEnumerable enumerable) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.Object&gt;</ReturnType>
+        </ReturnValue>
+        <Parameters>
+          <Parameter Name="enumerable" Type="System.Collections.IEnumerable" RefType="this" />
+        </Parameters>
+        <Docs>
+          <param name="enumerable">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="Xamarin.Forms.EnumerableExtensions" Member="M:Xamarin.Forms.EnumerableExtensions.ToReadOnlyList(System.Collections.IEnumerable)" />
       </Member>
     </ExtensionMethod>
     <ExtensionMethod>

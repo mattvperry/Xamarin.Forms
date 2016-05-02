@@ -2,7 +2,7 @@ using System;
 
 namespace Xamarin.Forms
 {
-	internal sealed class CollectionSynchronizationContext
+	public sealed class CollectionSynchronizationContext
 	{
 		internal CollectionSynchronizationContext(object context, CollectionSynchronizationCallback callback)
 		{

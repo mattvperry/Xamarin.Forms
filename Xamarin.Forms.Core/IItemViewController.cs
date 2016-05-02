@@ -1,4 +1,6 @@
-﻿namespace Xamarin.Forms
+﻿using System.Collections.Specialized;
+
+namespace Xamarin.Forms
 {
 	public interface IItemViewController
 	{
@@ -10,5 +12,7 @@
 		{
 			get;
 		}
+
+		event NotifyCollectionChangedEventHandler CollectionChanged;
 	}
 }

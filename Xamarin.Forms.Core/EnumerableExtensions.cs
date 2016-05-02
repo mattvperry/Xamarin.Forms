@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Linq;
 
 namespace Xamarin.Forms
 {
-	internal static class EnumerableExtensions
+	public static class EnumerableExtensions
 	{
 		public static IEnumerable<T> GetGesturesFor<T>(this IEnumerable<IGestureRecognizer> gestures, Func<T, bool> predicate = null) where T : GestureRecognizer
 		{
@@ -23,7 +26,7 @@ namespace Xamarin.Forms
 			}
 		}
 
-		internal static IEnumerable<T> Append<T>(this IEnumerable<T> enumerable, T item)
+		public static IEnumerable<T> Append<T>(this IEnumerable<T> enumerable, T item)
 		{
 			foreach (T x in enumerable)
 				yield return x;
@@ -31,7 +34,7 @@ namespace Xamarin.Forms
 			yield return item;
 		}
 
-		internal static void ForEach<T>(this IEnumerable<T> enumeration, Action<T> action)
+		public static void ForEach<T>(this IEnumerable<T> enumeration, Action<T> action)
 		{
 			foreach (T item in enumeration)
 			{
@@ -39,7 +42,7 @@ namespace Xamarin.Forms
 			}
 		}
 
-		internal static int IndexOf<T>(this IEnumerable<T> enumerable, T item)
+		public static int IndexOf<T>(this IEnumerable<T> enumerable, T item)
 		{
 			if (enumerable == null)
 				throw new ArgumentNullException("enumerable");
@@ -56,7 +59,7 @@ namespace Xamarin.Forms
 			return -1;
 		}
 
-		internal static int IndexOf<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
+		public static int IndexOf<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
 		{
 			var i = 0;
 			foreach (T element in enumerable)
@@ -70,12 +73,70 @@ namespace Xamarin.Forms
 			return -1;
 		}
 
-		internal static IEnumerable<T> Prepend<T>(this IEnumerable<T> enumerable, T item)
+		public static IEnumerable<T> Prepend<T>(this IEnumerable<T> enumerable, T item)
 		{
 			yield return item;
 
 			foreach (T x in enumerable)
 				yield return x;
+		}
+
+		public static IReadOnlyList<object> ToReadOnlyList(this IEnumerable enumerable)
+		{
+			var readOnlyList = enumerable as IReadOnlyList<object>;
+			if (readOnlyList != null)
+				return readOnlyList;
+
+			var list = enumerable as IList;
+			if (list != null)
+				return new ListAsReadOnlyList(list);
+
+			var objectList = enumerable as IList<object>;
+			if (objectList != null)
+				return new GenericListAsReadOnlyList<object>(objectList);
+
+			// allow IList<AnyType> without falling through to the array copy below
+			var typedList = (IReadOnlyList<object>)(
+				from iface in enumerable.GetType().GetTypeInfo().ImplementedInterfaces
+				where iface.Name == typeof(IList<>).Name && iface.GetGenericTypeDefinition() == typeof(IList<>)
+				let type = typeof(GenericListAsReadOnlyList<>).MakeGenericType(iface.GenericTypeArguments[0])
+				select Activator.CreateInstance(type, enumerable)
+			).FirstOrDefault();
+			if (typedList != null)
+				return typedList;
+
+			// ToArray instead of ToList to save memory
+			return enumerable.Cast<object>().ToArray();
+		}
+
+		public class ListAsReadOnlyList : IReadOnlyList<object>
+		{
+			IList _list;
+
+			public ListAsReadOnlyList(IList list)
+			{
+				_list = list;
+			}
+
+			public object this[int index] => _list[index];
+			public int Count => _list.Count;
+			public IEnumerator<object> GetEnumerator() => _list.Cast<object>().GetEnumerator();
+			IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+		}
+
+		public class GenericListAsReadOnlyList<T> : IReadOnlyList<object>
+		{
+			IList<T> _list;
+
+			public GenericListAsReadOnlyList(IList<T> list)
+			{
+				_list = list;
+			}
+
+			public object this[int index] => _list[index];
+			public int Count => _list.Count;
+			public IEnumerator<object> GetEnumerator() => _list.Cast<object>().GetEnumerator();
+			IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 		}
 	}
 }
