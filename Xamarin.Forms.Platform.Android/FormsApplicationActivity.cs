@@ -84,7 +84,8 @@ namespace Xamarin.Forms.Platform.Android
 
 		public override bool OnPrepareOptionsMenu(IMenu menu)
 		{
-			_canvas.PrepareMenu(menu);
+			if (_canvas != null)
+				_canvas.PrepareMenu(menu);			
 			return base.OnPrepareOptionsMenu(menu);
 		}
 
